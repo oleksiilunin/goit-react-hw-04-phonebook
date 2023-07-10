@@ -17,7 +17,7 @@ export const Form = styled(FormikForm)`
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   width: 100%;
 
   font-weight: 600;
@@ -57,12 +57,18 @@ export const FormButton = styled.button`
   border-radius: 8px;
   border: 1px solid #cececf;
 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #d2d8db;
-  color: #666666;
-
   font-size: 16px;
   font-weight: 500;
+
+  background-color: #d2d8db;
+  color: #666666;
+  box-shadow: #b4b4b4 2px 2px 0px;
+  transition: transform 200ms, box-shadow 200ms;
+
+  &:active {
+    transform: translateX(2px) translateY(2px);
+    box-shadow: #b4b4b4 0px 0px 0px;
+  }
 `;
 
 export const ErrorMessage = styled(FormikError)`
