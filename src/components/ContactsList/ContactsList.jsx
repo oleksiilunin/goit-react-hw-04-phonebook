@@ -18,48 +18,36 @@ import PropTypes from 'prop-types';
   speedMultiplier={1}
 />;
 
-const ContactsList = ({ filteredContacts, onDeleteContact, loadSpinner }) => {
+const ContactsList = ({ filteredContacts, onDeleteContact }) => {
   const sortedList = filteredContacts.sort((firstContact, secondContact) =>
     firstContact.name
       .toLowerCase()
       .localeCompare(secondContact.name.toLowerCase())
   );
   return (
-    <>
-      {loadSpinner ? (
-        <BeatLoader
-          color="#666666"
-          // cssOverride={{}}
-          margin={2}
-          size={12}
-          speedMultiplier={1}
-        />
-      ) : (
-        !!filteredContacts.length && (
-          <List>
-            {sortedList.map(({ id, name, number }) => (
-              <Item key={id}>
-                <ItemWrapper>
-                  <NameSpan>{name}:</NameSpan> <NumberSpan>{number}</NumberSpan>
-                </ItemWrapper>
-                <DeleteButton
-                  type="button"
-                  onClick={() => onDeleteContact(id)}
-                  aria-label="Delete contact"
-                >
-                  <FiUserMinus />
-                </DeleteButton>
-              </Item>
-            ))}
-          </List>
-        )
-      )}
-    </>
+    !!filteredContacts.length && (
+      <List>
+        {sortedList.map(({ id, name, number }) => (
+          <Item key={id}>
+            <ItemWrapper>
+              <NameSpan>{name}:</NameSpan> <NumberSpan>{number}</NumberSpan>
+            </ItemWrapper>
+            <DeleteButton
+              type="button"
+              onClick={() => onDeleteContact(id)}
+              aria-label="Delete contact"
+            >
+              <FiUserMinus />
+            </DeleteButton>
+          </Item>
+        ))}
+      </List>
+    )
   );
 };
 
 ContactsList.propTypes = {
-  contacts: PropTypes.arrayOf(
+  filteredContacts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,

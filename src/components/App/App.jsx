@@ -26,7 +26,6 @@ const notifyOptions = {
 export function App() {
   const [contacts, setContacts] = useLocalStorage('contacts', '');
   const [filterValue, setFilterValue] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
 
   const addContact = newContact => {
     contacts.filter(
@@ -48,19 +47,6 @@ export function App() {
           );
         });
   };
-  // const [contacts, setContacts] = useState(
-  //   () => JSON.parse(window.localStorage.getItem('contacts')) ?? []
-  // );
-  // useEffect(() => {
-  //   const contacts = JSON.parse(window.localStorage.getItem('contacts'));
-  //   if (contacts) {
-  //     setContacts(contacts);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
 
   const deleteContact = id => {
     setContacts(prevContacts => {
@@ -85,10 +71,6 @@ export function App() {
     }
   };
 
-  // const toggleLoading = () => {
-  //   setIsLoading(isLoading => !isLoading);
-  // };
-
   return (
     <AppContainer>
       <Header headerTitle="Phonebook" />
@@ -101,7 +83,6 @@ export function App() {
           onChangeInput={handleChangeFilterInput}
         />
         <ContactsList
-          loadSpinner={isLoading}
           filteredContacts={getFilteredContacts()}
           onDeleteContact={deleteContact}
         />
