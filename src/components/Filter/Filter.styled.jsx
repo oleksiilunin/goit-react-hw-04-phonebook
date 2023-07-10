@@ -5,7 +5,7 @@ export const Label = styled.label`
   flex-direction: column;
   max-width: 480px;
   width: 100%;
-  gap: 4px;
+  gap: 8px;
 
   color: #666666;
 
