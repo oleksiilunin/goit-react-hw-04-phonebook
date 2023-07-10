@@ -37,17 +37,30 @@ export const DeleteButton = styled.button`
   border-radius: 8px;
   border: 1px solid #cececf;
 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #d2d8db;
-  color: #666666;
-
   font-size: 16px;
   font-weight: 500;
+
+  background-color: #d2d8db;
+  color: #666666;
+  box-shadow: #b4b4b4 2px 2px 0px;
+  transition: transform 200ms, box-shadow 200ms;
+
+  &:active {
+    transform: translateX(2px) translateY(2px);
+    box-shadow: #b4b4b4 0px 0px 0px;
+  }
 `;
 
 export const NameSpan = styled.span`
   display: block;
   width: 100%;
   max-width: 160px;
-  white-space: nowrap;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+`;
+export const NumberSpan = styled.span`
+  /* display: block; */
+  word-break: break-all;
+  /* white-space: wrap; */
+  overflow-wrap: break-word;
 `;

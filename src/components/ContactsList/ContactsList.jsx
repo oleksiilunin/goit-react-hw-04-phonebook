@@ -6,6 +6,7 @@ import {
   ItemWrapper,
   DeleteButton,
   NameSpan,
+  NumberSpan,
 } from './ContactsList.styled';
 import PropTypes from 'prop-types';
 
@@ -39,7 +40,7 @@ const ContactsList = ({ filteredContacts, onDeleteContact, loadSpinner }) => {
             {sortedList.map(({ id, name, number }) => (
               <Item key={id}>
                 <ItemWrapper>
-                  <NameSpan>{name}:</NameSpan> <span>{number}</span>
+                  <NameSpan>{name}:</NameSpan> <NumberSpan>{number}</NumberSpan>
                 </ItemWrapper>
                 <DeleteButton
                   type="button"
