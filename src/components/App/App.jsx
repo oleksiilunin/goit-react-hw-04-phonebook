@@ -28,6 +28,7 @@ export function App() {
   const [filterValue, setFilterValue] = useState('');
 
   const addContact = newContact => {
+    contacts &&
     contacts.filter(
       contact =>
         contact.name.toLowerCase().trim() ===
@@ -56,9 +57,11 @@ export function App() {
   };
 
   const getFilteredContacts = () => {
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filterValue.toLocaleLowerCase())
-    );
+    return contacts
+      ? contacts.filter(contact =>
+          contact.name.toLowerCase().includes(filterValue.toLocaleLowerCase())
+        )
+      : [];
   };
 
   const handleChangeFilterInput = e => {
